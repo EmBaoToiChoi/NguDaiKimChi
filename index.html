@@ -1,89 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rescue Pals Simulator</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="./Code.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="Header_Left">
-                <a href="#">Rescue Pals Simulater🎮</a>
-                <a href="#">
-                    <img src="./Img/Gemini_Generated_Image_4in32t4in32t4in3.png" alt="Logo">
-                </a>
-            </div>
-            <div class="Header_Top">
-                <li>
-                    <a href="#Trangchu">Trang Chủ</a>
-                    <a href="#Gioithieu">Giới Thiệu </a>
-                    <a href="#Boicanh">Bối Cảnh </a>
-                    <a href="#Phuongtien">Phương Tiện </a>
-                </li>
-            </div>
-            <div class="Header_Right">
-                <button><i class="fa-solid fa-download"></i>Tải xuống </button>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="Main">
-            <div id="Trangchu" class="Layout_1">
-                <div class="video-slide">
-                    <video id="videoCurrent" autoplay muted loop playsinline></video>
-                    <video id="videoNext" muted></video>
-                </div>
-                <div class="button_Layout_1">
-                    <i class="fa-solid fa-chevron-left" id="btnBack"></i>
-                    <i class="fa-solid fa-chevron-right" id="btnNext"></i>
-                </div>
-            </div>
-            <div class="dots" id="dots"></div>
-            <div class="Layout_2">
-                <h2 id="Gioithieu">About The Game👩‍🚒</h2>
-                <h1>Trung Tâm Điều Hành Cứu Hộ🚒</h1>
-                <p> Là game chiến thuật quản lý góc nhìn từ trên xuống, nơi bạn vào vai tổng
-                    đài viên điều phối các lực lượng cứu hộ.
-                    Trong thời gian thực, người chơi phải đưa ra quyết định nhanh chóng để xử lý các sự cố khẩn cấp và
-                    giảm thiểu thiệt hại cho thành phố.🧯<br></p>
-                    <ul class="icon">
-                        <li>🧯 Điều phối xe cứu hỏa, cứu thương, xuồng cứu hộ<br></li>
-                        <li>⏱️ Thời gian phản ứng quyết định điểm số<br></li>
-                        <li>🗺️ Bản đồ chia khu vực với thách thức riêng <br></li>
-                        <li>💾 Chơi offline – tập trung chiến thuật <br></li>
-                    </ul>
-                <video class="video_layout2" src="./MenuMap.mp4" autoplay muted loop playsinline></video>
-                <button><i class="fa-solid fa-download2"></i>Tải xuống </button>
-            </div>
-            <div id="Boicanh" class="Layout_3">
 
-            </div>
-            <div id="Phuongtien" class="Layout_4">
+<header>
+    <div class="header">
+        <div class="Header_Left">
+            <a href="#">Rescue Pals Simulator 🎮</a>
+            <a href="#">
+                <img src="./Img/Gemini_Generated_Image_4in32t4in32t4in3.png" alt="Logo">
+            </a>
+        </div>
 
+        <nav class="Header_Top">
+            <ul>
+                <li><a href="#Trangchu">Trang Chủ</a></li>
+                <li><a href="#Gioithieu">Giới Thiệu</a></li>
+                <li><a href="#Boicanh">Bối Cảnh</a></li>
+                <li><a href="#Phuongtien">Phương Tiện</a></li>
+            </ul>
+        </nav>
+
+        <div class="Header_Right">
+            <button>
+                <i class="fa-solid fa-download"></i> Tải xuống
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="Main">
+
+        <!-- ===== SLIDER ===== -->
+        <section id="Trangchu" class="Layout_1">
+            <div class="video-slide">
+                <video id="videoCurrent" muted autoplay loop playsinline></video>
+                <video id="videoNext" muted playsinline></video>
             </div>
-        </div>
-    </main>
-    <footer>
-        <div class="Footer">
-            <p>© 2026 Rescue Pals Simulator🧯. Ngũ Đại Kim Chi. <br> FPT POLYTECHNIYC HCM</p>
-            <img class="img2" src="./Img/Gemini_Generated_Image_4in32t4in32t4in3.png" alt="Logo">
-            <img class="img3" src="./Img/LOGO.png" alt="">
-        </div>
-    </footer>
-    <script src="./Code.js"></script>
+
+            <div class="button_Layout_1">
+                <i class="fa-solid fa-chevron-left" id="btnBack"></i>
+                <i class="fa-solid fa-chevron-right" id="btnNext"></i>
+            </div>
+        </section>
+
+        <div class="dots" id="dots"></div>
+
+        <!-- ===== ABOUT ===== -->
+        <section class="Layout_2">
+            <h2 id="Gioithieu">About The Game 👩‍🚒</h2>
+            <h1>Trung Tâm Điều Hành Cứu Hộ 🚒</h1>
+
+            <p>
+                Là game chiến thuật quản lý góc nhìn từ trên xuống, nơi bạn vào vai tổng đài viên
+                điều phối các lực lượng cứu hộ trong thời gian thực. 🧯
+            </p>
+
+            <ul class="icon">
+                <li>🧯 Điều phối xe cứu hỏa, cứu thương, xuồng cứu hộ</li>
+                <li>⏱️ Thời gian phản ứng quyết định điểm số</li>
+                <li>🗺️ Bản đồ chia khu vực với thách thức riêng</li>
+                <li>💾 Chơi offline – tập trung chiến thuật</li>
+            </ul>
+
+            <video class="video_layout2"
+                   src="./MenuMap.mp4"
+                   muted autoplay loop playsinline></video>
+
+            <button>
+                <i class="fa-solid fa-download"></i> Tải xuống
+            </button>
+        </section>
+
+        <section id="Boicanh" class="Layout_3"></section>
+        <section id="Phuongtien" class="Layout_4"></section>
+
+    </div>
+</main>
+
+<footer>
+    <div class="Footer">
+        <p>© 2026 Rescue Pals Simulator 🧯 <br> FPT Polytechnic HCM</p>
+        <img class="img2" src="./Img/Gemini_Generated_Image_4in32t4in32t4in3.png">
+        <img class="img3" src="./Img/LOGO.png">
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="./Code.js"></script>
 </body>
-
-
 </html>
-
-
-
