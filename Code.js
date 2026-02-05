@@ -1,17 +1,24 @@
-const videos = [
-  "./1..mp4",
-  "./2..mp4",
-  "./3..mp4",
-  "./4..mp4",
-  "./5..mp4",
-  "./6..mp4",
-  "./7..mp4",
-];
+document.addEventListener("DOMContentLoaded", () => {
+  const videos = [
+    "./1.mp4",
+    "./2.mp4",
+    "./3.mp4",
+    "./4.mp4",
+    "./5.mp4",
+    "./6.mp4",
+    "./7.mp4",
+  ];
 
-let index = 0;
-const videoCurrent = document.getElementById("videoCurrent");
-const videoNext = document.getElementById("videoNext");
-const dots = document.getElementById("dots");
+  let index = 0;
+  const videoCurrent = document.getElementById("videoCurrent");
+  const videoNext = document.getElementById("videoNext");
+  const dots = document.getElementById("dots");
+
+  if (!videoCurrent || !videoNext || !dots) return;
+
+  // phần code slider giữ nguyên
+});
+
 
 /* dots */
 videos.forEach((_, i) => {
@@ -82,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     offsetBody();
     window.addEventListener("resize", offsetBody);
 });
+
 
 
 
