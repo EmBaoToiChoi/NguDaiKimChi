@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const videos = [
-    "./1.mp4",
-    "./2.mp4",
-    "./3.mp4",
-    "./4.mp4",
-    "./5.mp4",
-    "./6.mp4",
-    "./7.mp4",
+    "./Video/1.mp4",
+    "./Video/2.mp4",
+    "./Video/3.mp4",
+    "./Video/4.mp4",
+    "./Video/5.mp4",
+    "./Video/6.mp4",
+    "./Video/7.mp4",
   ];
 
   let index = 0;
@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===== DOTS ===== */
   videos.forEach((_, i) => {
-    const d = document.createElement("div");
-    d.className = "dot";
-    d.onclick = () => slideTo(i, i > index ? "right" : "left");
-    dots.appendChild(d);
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.onclick = () => slideTo(i, i > index ? "right" : "left");
+    dots.appendChild(dot);
   });
 
   function updateDots() {
@@ -68,17 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ===== CONTROLS ===== */
-  function nextVideo() {
-    slideTo((index + 1) % videos.length, "right");
-  }
+  document.getElementById("btnNext").onclick =
+    () => slideTo((index + 1) % videos.length, "right");
 
-  function previousVideo() {
-    slideTo((index - 1 + videos.length) % videos.length, "left");
-  }
+  document.getElementById("btnBack").onclick =
+    () => slideTo((index - 1 + videos.length) % videos.length, "left");
 
-  document.getElementById("btnNext").onclick = nextVideo;
-  document.getElementById("btnBack").onclick = previousVideo;
-  videoCurrent.onended = nextVideo;
+  videoCurrent.onended =
+    () => slideTo((index + 1) % videos.length, "right");
 
   /* ===== INIT ===== */
   videoCurrent.src = videos[index];
@@ -87,10 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===== FIX HEADER OFFSET ===== */
   const header = document.querySelector("header");
-  function offsetBody() {
+  const offsetBody = () =>
     document.body.style.paddingTop = header.offsetHeight + "px";
-  }
+
   offsetBody();
   window.addEventListener("resize", offsetBody);
-
 });
