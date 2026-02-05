@@ -1,11 +1,11 @@
 const videos = [
-  "Video/1..mp4",
-  "Video/2..mp4",
-  "Video/3..mp4",
-  "Video/4..mp4",
-  "Video/5..mp4",
-  "Video/6..mp4",
-  "Video/7..mp4",
+  "1..mp4",
+  "2..mp4",
+  "3..mp4",
+  "4..mp4",
+  "5..mp4",
+  "6..mp4",
+  "7..mp4",
 ];
 
 let index = 0;
@@ -82,4 +82,5 @@ document.addEventListener("DOMContentLoaded", function () {
     offsetBody();
     window.addEventListener("resize", offsetBody);
 });
+
 
