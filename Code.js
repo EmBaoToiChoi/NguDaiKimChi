@@ -1,93 +1,96 @@
-const videos = [
-  "/1.mp4",
-  "/2.mp4",
-  "/3.mp4",
-  "/4.mp4",
-  "/5.mp4",
-  "/6.mp4",
-  "/7.mp4",
-];
+document.addEventListener("DOMContentLoaded", () => {
 
-let index = 0;
-const videoCurrent = document.getElementById("videoCurrent");
-const videoNext = document.getElementById("videoNext");
-const dots = document.getElementById("dots");
+  const videos = [
+    "./1.mp4",
+    "./2.mp4",
+    "./3.mp4",
+    "./4.mp4",
+    "./5.mp4",
+    "./6.mp4",
+    "./7.mp4",
+  ];
 
+  let index = 0;
 
-/* dots */
-videos.forEach((_, i) => {
-  const d = document.createElement("div");
-  d.className = "dot";
-  d.onclick = () => slideTo(i);
-  dots.appendChild(d);
-});
+  const videoCurrent = document.getElementById("videoCurrent");
+  const videoNext = document.getElementById("videoNext");
+  const dots = document.getElementById("dots");
 
-function updateDots() {
-  [...dots.children].forEach((d, i) =>
-    d.classList.toggle("active", i === index)
-  );
-}
+  if (!videoCurrent || !videoNext || !dots) return;
 
-/* slide core */
-function slideTo(newIndex, dir = "right") {
-  if (newIndex === index) return;
+  videoCurrent.muted = true;
+  videoNext.muted = true;
 
-  videoNext.src = videos[newIndex];
-  videoNext.play();
-
-  videoNext.className = dir === "right" ? "enter-right" : "enter-left";
-  videoCurrent.className = "active";
-
-  requestAnimationFrame(() => {
-    videoNext.classList.add("active");
-    videoCurrent.className =
-      dir === "right" ? "exit-left" : "exit-right";
+  /* ===== DOTS ===== */
+  videos.forEach((_, i) => {
+    const d = document.createElement("div");
+    d.className = "dot";
+    d.onclick = () => slideTo(i, i > index ? "right" : "left");
+    dots.appendChild(d);
   });
 
-  setTimeout(() => {
-    videoCurrent.src = videoNext.src;
-    videoCurrent.play();
-    videoCurrent.className = "active";
-    videoNext.className = "";
-    index = newIndex;
-    updateDots();
-  }, 500);
-}
+  function updateDots() {
+    [...dots.children].forEach((d, i) =>
+      d.classList.toggle("active", i === index)
+    );
+  }
 
-/* controls */
-function nextVideo() {
-  slideTo((index + 1) % videos.length, "right");
-}
+  /* ===== SLIDE CORE ===== */
+  function slideTo(newIndex, dir = "right") {
+    if (newIndex === index) return;
 
-function previousVideo() {
-  slideTo((index - 1 + videos.length) % videos.length, "left");
-}
+    videoNext.pause();
+    videoNext.removeAttribute("src");
+    videoNext.load();
 
-/* init */
-videoCurrent.src = videos[index];
-videoCurrent.play();
-updateDots();
+    videoNext.src = videos[newIndex];
 
-document.getElementById("btnNext").onclick = nextVideo;
-document.getElementById("btnBack").onclick = previousVideo;
-videoCurrent.onended = nextVideo;
+    videoNext.oncanplay = () => {
+      videoNext.className = dir === "right" ? "enter-right" : "enter-left";
 
-document.addEventListener("DOMContentLoaded", function () {
-    const header = document.querySelector("header");
+      requestAnimationFrame(() => {
+        videoNext.classList.add("active");
+        videoCurrent.className =
+          dir === "right" ? "exit-left" : "exit-right";
+      });
 
-    function offsetBody() {
-        const headerHeight = header.offsetHeight;
-        document.body.style.paddingTop = headerHeight + "px";
-    }
+      videoNext.play().catch(() => {});
+    };
 
-    offsetBody();
-    window.addEventListener("resize", offsetBody);
+    setTimeout(() => {
+      videoCurrent.src = videoNext.src;
+      videoCurrent.play().catch(() => {});
+      videoCurrent.className = "active";
+      videoNext.className = "";
+      index = newIndex;
+      updateDots();
+    }, 500);
+  }
+
+  /* ===== CONTROLS ===== */
+  function nextVideo() {
+    slideTo((index + 1) % videos.length, "right");
+  }
+
+  function previousVideo() {
+    slideTo((index - 1 + videos.length) % videos.length, "left");
+  }
+
+  document.getElementById("btnNext").onclick = nextVideo;
+  document.getElementById("btnBack").onclick = previousVideo;
+  videoCurrent.onended = nextVideo;
+
+  /* ===== INIT ===== */
+  videoCurrent.src = videos[index];
+  videoCurrent.play().catch(() => {});
+  updateDots();
+
+  /* ===== FIX HEADER OFFSET ===== */
+  const header = document.querySelector("header");
+  function offsetBody() {
+    document.body.style.paddingTop = header.offsetHeight + "px";
+  }
+  offsetBody();
+  window.addEventListener("resize", offsetBody);
+
 });
-
-
-
-
-
-
-
-
